@@ -8,30 +8,28 @@
 
 import UIKit
 
+protocol ChildReceiver: class {
+    func receiveChild(_ child: Child)
+}
+
 class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
     //MARK: - Properties -
     var chore: Chore?
     var child: Child?
     var controller: ParentController?
+    weak var delegate: ChildReceiver?
     var edited = false //one way switch
 
     //MARK: - Outlets -
     @IBOutlet private weak var choreNameTextField: UITextField!
     @IBOutlet private weak var pointsChooser: UIPickerView!
     @IBOutlet private weak var rewardsPicker: UIPickerView!
+    @IBOutlet private weak var frequencyPicker: UIPickerView!
     @IBOutlet private weak var dueDatePicker: UIDatePicker!
     @IBOutlet private weak var completeButton: UIButton!
 
     //MARK: - Actions -
-    @IBAction func closeView(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func addRewardButtonTapped(_ sender: UIButton) {
-
-    }
-
-    @IBAction func completeButtonTapped(_ sender: UIButton) {
+    @IBAction private func addRewardButtonTapped(_ sender: UIButton) {
 
     }
 
@@ -40,19 +38,30 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
         guard let name = choreNameTextField.text,
             name != ""
         else { return }
-        self.chore = Chore(name: name,
+        self.chore = Chore(id: self.chore?.id ?? UUID(),
+                           name: name,
                            points: pointsChooser.selectedRow(inComponent: 0),
-                           dueDate: dueDatePicker.date)
-        
+                           frequency: Chore.Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0)) ?? .daily,
+                           dueDate: dueDatePicker.date,
+                           complete: chore?.complete ?? false,
+                           image: nil)
+        //updates in willDisappear
+        navigationController?.popViewController(animated: true)
     }
 
     //MARK: - Editing -
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         navigationItem.hidesBackButton = editing
-        if editing { edited = true }
+        if editing {
+            edited = true
+        } else {
+            saveChore()
+        }
         choreNameTextField.isUserInteractionEnabled = editing
+        choreNameTextField.becomeFirstResponder()
         pointsChooser.isUserInteractionEnabled = editing
+        frequencyPicker.isUserInteractionEnabled = editing
         dueDatePicker.isUserInteractionEnabled = editing
     }
 
@@ -67,9 +76,11 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
             navigationItem.rightBarButtonItem = editButtonItem
         } else {
             edited = true
+            choreNameTextField.becomeFirstResponder()
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveChore))
         }
         choreNameTextField.text = chore?.name
+        choreNameTextField.isUserInteractionEnabled = edited
 
         // MARK: Picker Views
         pointsChooser.delegate = self
@@ -78,6 +89,13 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
         pointsChooser.selectRow(chore?.points ?? 1,
                                 inComponent: 0,
                                 animated: true)
+
+        frequencyPicker.delegate = self
+        frequencyPicker.dataSource = self
+        frequencyPicker.isUserInteractionEnabled = edited
+        frequencyPicker.selectRow(chore?.frequency.rawValue ?? 0,
+                                  inComponent: 0,
+                                  animated: true)
 
         dueDatePicker.minimumDate = Date()
         dueDatePicker.isUserInteractionEnabled = edited
@@ -88,18 +106,21 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if edited {
-            guard let chore = chore else { return }
-            self.child?.chores?.append(chore)
-            guard let child = child else { return }
-            DatabaseService().update(child: child)
+            guard let chore = chore,
+                var child = child
+            else { return }
+            controller?.updateChore(chore: chore, child: &child)
+            delegate?.receiveChild(child)
         }
     }
 
+
      // MARK: - Navigation -
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
      }
 }
+
 //MARK: - PickerView DataSource -
 extension ChoresDetailViewController: UIPickerViewDataSource {
     private func pointsPickerDataSource() -> [Int] {
@@ -115,6 +136,8 @@ extension ChoresDetailViewController: UIPickerViewDataSource {
         switch pickerView {
         case pointsChooser:
             return 1
+        case frequencyPicker:
+            return 1
         default:
             return 0
         }
@@ -124,6 +147,8 @@ extension ChoresDetailViewController: UIPickerViewDataSource {
         switch pickerView {
         case pointsChooser:
             return pointsPickerDataSource().count
+        case frequencyPicker:
+            return Chore.Frequency.allCases.count
         default:
             return 0
         }
@@ -133,15 +158,10 @@ extension ChoresDetailViewController: UIPickerViewDataSource {
         switch pickerView {
         case pointsChooser:
             return "\(pointsPickerDataSource()[row])"
+        case frequencyPicker:
+            return "\(Chore.Frequency.allCases[row])"
         default:
             return nil
-        }
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch pickerView {
-        default:
-            break
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//MARK: - Dummy Data -
 let BELLA = Child(id: UUID(uuidString: "47EDA7AC-26A9-426E-999E-D6410B6C8660")!,
                   parent: KENNY,
                   firstName: "Isabella",
@@ -15,11 +16,12 @@ let BELLA = Child(id: UUID(uuidString: "47EDA7AC-26A9-426E-999E-D6410B6C8660")!,
                   displayName: "Bella",
                   chores: CHORES)
 
-
+//MARK: - Codable -
 struct ChildRep: Codable {
     let children: [String:Child]
 }
 
+//MARK: - Object -
 struct Child: Codable, Equatable {
     let id: UUID
     let parentId: UUID
@@ -30,6 +32,7 @@ struct Child: Codable, Equatable {
     var chores: [Chore]?
     var points: Int
 
+    // MARK: Equatable
     static func == (lhs: Child, rhs: Child) -> Bool {
         lhs.id == rhs.id
     }

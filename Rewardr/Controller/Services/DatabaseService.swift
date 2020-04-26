@@ -40,10 +40,13 @@ class DatabaseService {
         let childURL = parentURL.appendingPathComponent(child.parentId.uuidString)
             .appendingPathComponent("children").appendingPathComponent(child.id.uuidString).appendingPathExtension("json")
         let childData = try! JSONEncoder().encode(child)
-        guard var childUpdateRequest = NetworkService.createRequest(url: childURL, method: .patch) else { return }
+        guard var childUpdateRequest = NetworkService.createRequest(url: childURL, method: .patch) else {
+
+            return
+        }
         childUpdateRequest.httpBody = childData
         NetworkService.networkSession(with: childUpdateRequest) { status in
-            guard let _ = status.data else {
+            guard let data = status.data else {
                 NSLog(
                     """
                     Error updating \(child.displayName): \(#file), \(#function), \(#line) -
@@ -51,6 +54,7 @@ class DatabaseService {
                     """)
                 return
             }
+            print("Data sent: \(data)")
         }
     }
 }

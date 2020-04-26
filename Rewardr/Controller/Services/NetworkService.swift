@@ -96,7 +96,7 @@ class NetworkService {
     class func networkSession(with request: URLRequest, complete: @escaping (DownloadStatus) -> Void) {
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
-                print("Error downloading from \(#file) \(#function) \(#line): \(error)")
+                print("Error with Datatask \(#file) \(#function) \(#line): \(error)")
                 complete(DownloadStatus(error: error, data: nil))
             }
 

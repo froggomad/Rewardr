@@ -8,19 +8,13 @@
 
 import Foundation
 
-protocol ChildReceiver: class {
+protocol ChildrenReceiver: class {
     var myChildren: [Child] { get set }
     func receive(children: [Child])
 }
 
-protocol ChoreReceiver: class {
-    var myChild: Child? { get set }
-    func receive(chores: [Chore])
-}
-
 class ParentController {
-    weak var childDelegate: ChildReceiver?
-    weak var choreDelegate: ChoreReceiver?
+    weak var childDelegate: ChildrenReceiver?
 
     let databaseService = DatabaseService()
 
@@ -30,19 +24,10 @@ class ParentController {
         }
     }
 
-    var myChild: Child? {
-        didSet {
-            guard let chores = myChild?.chores else { return }
-            choreDelegate?.receive(chores: chores)
-        }
-    }
 
-    init(delegate: ChildReceiver) {
+
+    init(delegate: ChildrenReceiver) {
         self.childDelegate = delegate
-    }
-
-    init(delegate: ChoreReceiver) {
-        self.choreDelegate = delegate
     }
 
     func downloadChildren(from parent: Parent, complete: @escaping () -> Void = { })  {
@@ -55,7 +40,27 @@ class ParentController {
         }
     }
 
-    func updateChild(child: Child) {
+    func updateChild(_ child: Child) {
         databaseService.update(child: child)
+    }
+
+    func updateChore(chore: Chore, child: inout Child) {
+        if child.chores == nil {
+            child.chores = [chore]
+            updateChild(child)
+            return
+        }
+        if let index = child.chores?.firstIndex(of: chore) {
+            child.chores?[index] = chore
+        } else {
+            child.chores?.append(chore)
+        }
+        updateChild(child)
+    }
+
+    func deleteChore(chore: Chore, child: inout Child) {
+        guard let index = child.chores?.firstIndex(of: chore) else { return }
+        child.chores?.remove(at: index)
+        updateChild(child)
     }
 }

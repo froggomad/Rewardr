@@ -42,7 +42,7 @@ class ChildCollectionViewCell: UICollectionViewCell {
         nameLabel.text = child.displayName
         pointsLabel.text = "Points: \(child.points)"
         //setup the chores label if the child has chores
-        guard let chores = child.chores else { return }
+        guard let chores = child.chores?.sorted(by: {$0.dueDate < $1.dueDate }) else { return }
         let names = chores.map { $0.name }
         choresLabel.text = "Chores:\n\(names.joined(separator: ", "))"
     }

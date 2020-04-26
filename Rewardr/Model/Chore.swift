@@ -7,36 +7,43 @@
 //
 
 import UIKit
-
+//MARK: - Dummy Data -
 let CHORES: [Chore] = [
     Chore(name: "Test",
           points: 10,
+          frequency: .weekly,
           dueDate: Date(),
           image: URL(string: "http://www.google.com")!),
     Chore(name: "Test2",
     points: 20,
+    frequency: .daily,
     dueDate: Date(),
     image: URL(string: "http://www.google.com")!)
 ]
-
-typealias ChoreRep = [UUID:Chore]
-
+//MARK: - Object -
 struct Chore: Codable, Equatable {
-    let id: UUID = UUID()
+    enum Frequency: Int, Codable, CaseIterable {
+        case daily
+        case weekly
+    }
+
+    var id: UUID = UUID()
     let name: String
     var points: Int
+    var frequency: Frequency
     var dueDate: Date
     var complete: Bool = false
     var image: URL? = nil
-
+    // MARK: Codable
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case points
+        case frequency
         case dueDate = "date"
         case image
     }
-
+    // MARK: Equatable
     static func == (lhs: Chore, rhs: Chore) -> Bool {
         lhs.id == rhs.id
     }

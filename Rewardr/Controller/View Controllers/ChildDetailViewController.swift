@@ -17,6 +17,7 @@ class ChildDetailViewController: UIViewController {
     let editChoreSegue = "EditChoreSegue"
     let choreCellId = "ChoreCellId"
     var controller: ParentController?
+    weak var delegate: ChildrenReceiver?
     var child: Child? {
         didSet {
             updateViews()
@@ -49,11 +50,12 @@ class ChildDetailViewController: UIViewController {
         guard let destination = segue.destination as? ChoresDetailViewController else { return }
         destination.child = child
         destination.controller = controller
+        destination.delegate = self
         if segue.identifier == editChoreSegue {
             guard let index = tableView.indexPathForSelectedRow?.row,
                 let child = child
             else { return }
-            let chore = child.chores?[index]
+            let chore = child.chores?.sorted(by: {$0.dueDate < $1.dueDate})[index]
             destination.chore = chore
         }
     }
@@ -68,19 +70,41 @@ extension ChildDetailViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let child = child,
-            let chores = child.chores
+            let chores = child.chores?.sorted(by: { $0.dueDate < $1.dueDate })
         else { return UITableViewCell() }
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .short
         let cell = tableView.dequeueReusableCell(withIdentifier: choreCellId, for: indexPath)
         cell.textLabel?.text = chores[indexPath.row].name
-        cell.detailTextLabel?.text = dateFormatter.string(from: chores[indexPath.row].dueDate) 
-
+        cell.detailTextLabel?.text = dateFormatter.string(from: chores[indexPath.row].dueDate)
         return cell
     }
 }
 
 extension ChildDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard var child = child,
+                let chores = child.chores
+            else { return }
+            let chore = chores[indexPath.row]
+            controller?.deleteChore(chore: chore, child: &child)
+            self.child = child
+        }
+    }
 }
+
+extension ChildDetailViewController: ChildReceiver {
+    func receiveChild(_ child: Child) {
+        //if the id matches, update the child
+        if self.child == child {
+            self.child = child
+        }
+    }
+}
+

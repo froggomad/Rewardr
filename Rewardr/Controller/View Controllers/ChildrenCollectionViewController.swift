@@ -20,6 +20,11 @@ class ChildrenCollectionViewController: UICollectionViewController {
     //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         parentController.downloadChildren(from: KENNY) {
             KENNY.children = self.myChildren
         }
@@ -31,8 +36,7 @@ class ChildrenCollectionViewController: UICollectionViewController {
             guard let destination = segue.destination as? ChildDetailViewController,
                 let childIndex = collectionView.indexPathsForSelectedItems?.first?.item else { return }
             destination.child = parentController.myChildren[childIndex]
-            guard let childReceiverDestination = destination as? ChoreReceiver else { return }
-            destination.controller = ParentController(delegate: childReceiverDestination)
+            destination.controller = parentController
         }
      }
 
@@ -50,7 +54,7 @@ class ChildrenCollectionViewController: UICollectionViewController {
 
 }
 
-extension ChildrenCollectionViewController: ChildReceiver {
+extension ChildrenCollectionViewController: ChildrenReceiver {
     func receive(children: [Child]) {
         self.myChildren = children
     }
