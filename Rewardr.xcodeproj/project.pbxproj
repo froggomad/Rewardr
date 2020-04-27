@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030C90559D7D579C48863185 /* Pods_Rewardr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B29122E09F9998532A24FD /* Pods_Rewardr.framework */; };
 		B92AD1A7244D4DD100060897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AD1A6244D4DD100060897 /* AppDelegate.swift */; };
 		B92AD1A9244D4DD100060897 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AD1A8244D4DD100060897 /* SceneDelegate.swift */; };
 		B92AD1AE244D4DD100060897 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B92AD1AC244D4DD100060897 /* Main.storyboard */; };
@@ -22,10 +23,13 @@
 		B92AD207244E8BDF00060897 /* ChildrenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AD206244E8BDF00060897 /* ChildrenCollectionViewController.swift */; };
 		B92AD209244E8DA100060897 /* ParentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AD208244E8DA100060897 /* ParentController.swift */; };
 		B92AD22F244F85D900060897 /* ChildDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AD22E244F85D800060897 /* ChildDetailViewController.swift */; };
+		B9498EAE2456608200DE7761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9498EAD2456608200DE7761 /* GoogleService-Info.plist */; };
 		B9710638245010000081F564 /* ChoresDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9710637245010000081F564 /* ChoresDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5064FC77415928AD0DD96075 /* Pods-Rewardr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewardr.release.xcconfig"; path = "Target Support Files/Pods-Rewardr/Pods-Rewardr.release.xcconfig"; sourceTree = "<group>"; };
+		6B49C1DBED7436464D1A5243 /* Pods-Rewardr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewardr.debug.xcconfig"; path = "Target Support Files/Pods-Rewardr/Pods-Rewardr.debug.xcconfig"; sourceTree = "<group>"; };
 		B92AD1A3244D4DD100060897 /* Rewardr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewardr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92AD1A6244D4DD100060897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B92AD1A8244D4DD100060897 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +48,9 @@
 		B92AD206244E8BDF00060897 /* ChildrenCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildrenCollectionViewController.swift; sourceTree = "<group>"; };
 		B92AD208244E8DA100060897 /* ParentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentController.swift; sourceTree = "<group>"; };
 		B92AD22E244F85D800060897 /* ChildDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDetailViewController.swift; sourceTree = "<group>"; };
+		B9498EAD2456608200DE7761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9710637245010000081F564 /* ChoresDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresDetailViewController.swift; sourceTree = "<group>"; };
+		C7B29122E09F9998532A24FD /* Pods_Rewardr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rewardr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,17 +58,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				030C90559D7D579C48863185 /* Pods_Rewardr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3508D4D49EDB146F52197A25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7B29122E09F9998532A24FD /* Pods_Rewardr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B92AD19A244D4DD100060897 = {
 			isa = PBXGroup;
 			children = (
 				B92AD1A5244D4DD100060897 /* Rewardr */,
 				B92AD1A4244D4DD100060897 /* Products */,
+				C8E286A54F0320EBB16F88ED /* Pods */,
+				3508D4D49EDB146F52197A25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +105,7 @@
 		B92AD1BA244D4E4300060897 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B9498EAD2456608200DE7761 /* GoogleService-Info.plist */,
 				B92AD1CA244DDD6600060897 /* Networking.playground */,
 				B92AD1A6244D4DD100060897 /* AppDelegate.swift */,
 				B92AD1A8244D4DD100060897 /* SceneDelegate.swift */,
@@ -129,7 +147,7 @@
 		B92AD1BF244D4EA500060897 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B92AD1CC244DDFC100060897 /* Model Controller */,
+				B92AD1CC244DDFC100060897 /* Model Controllers */,
 				B92AD1CB244DDFBB00060897 /* Services */,
 				B92AD1BE244D4E9900060897 /* View Controllers */,
 			);
@@ -156,12 +174,12 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		B92AD1CC244DDFC100060897 /* Model Controller */ = {
+		B92AD1CC244DDFC100060897 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				B92AD208244E8DA100060897 /* ParentController.swift */,
 			);
-			path = "Model Controller";
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		B92AD202244E81AE00060897 /* Custom Cells */ = {
@@ -180,6 +198,15 @@
 			path = "Collection View";
 			sourceTree = "<group>";
 		};
+		C8E286A54F0320EBB16F88ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B49C1DBED7436464D1A5243 /* Pods-Rewardr.debug.xcconfig */,
+				5064FC77415928AD0DD96075 /* Pods-Rewardr.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -187,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B92AD1B7244D4DD300060897 /* Build configuration list for PBXNativeTarget "Rewardr" */;
 			buildPhases = (
+				7A408ADC71D38C85900F2E49 /* [CP] Check Pods Manifest.lock */,
 				B92AD19F244D4DD100060897 /* Sources */,
 				B92AD1A0244D4DD100060897 /* Frameworks */,
 				B92AD1A1244D4DD100060897 /* Resources */,
+				90A59A45C7601C9951D0371E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,12 +268,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				B92AD1B3244D4DD300060897 /* LaunchScreen.storyboard in Resources */,
+				B9498EAE2456608200DE7761 /* GoogleService-Info.plist in Resources */,
 				B92AD1B0244D4DD300060897 /* Assets.xcassets in Resources */,
 				B92AD1AE244D4DD100060897 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A408ADC71D38C85900F2E49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rewardr-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90A59A45C7601C9951D0371E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rewardr/Pods-Rewardr-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rewardr/Pods-Rewardr-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rewardr/Pods-Rewardr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B92AD19F244D4DD100060897 /* Sources */ = {
@@ -405,6 +477,7 @@
 		};
 		B92AD1B8244D4DD300060897 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B49C1DBED7436464D1A5243 /* Pods-Rewardr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -423,6 +496,7 @@
 		};
 		B92AD1B9244D4DD300060897 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5064FC77415928AD0DD96075 /* Pods-Rewardr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
