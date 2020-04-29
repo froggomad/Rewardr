@@ -38,7 +38,7 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
         guard let name = choreNameTextField.text,
             name != ""
         else { return }
-        self.chore = Chore(id: self.chore?.id ?? UUID(),
+        self.chore = Chore(id: self.chore?.id ?? "",
                            name: name,
                            points: pointsChooser.selectedRow(inComponent: 0),
                            frequency: Chore.Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0)) ?? .daily,

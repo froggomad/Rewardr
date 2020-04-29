@@ -9,16 +9,18 @@
 import UIKit
 //MARK: - Dummy Data -
 let CHORES: [Chore] = [
-    Chore(name: "Test",
+    Chore(id: "1",
+          name: "Test",
           points: 10,
           frequency: .weekly,
           dueDate: Date(),
           image: URL(string: "http://www.google.com")!),
-    Chore(name: "Test2",
-    points: 20,
-    frequency: .daily,
-    dueDate: Date(),
-    image: URL(string: "http://www.google.com")!)
+    Chore(id: "2",
+          name: "Test2",
+          points: 20,
+          frequency: .daily,
+          dueDate: Date(),
+          image: URL(string: "http://www.google.com")!)
 ]
 //MARK: - Object -
 struct Chore: Codable, Equatable {
@@ -27,7 +29,7 @@ struct Chore: Codable, Equatable {
         case weekly
     }
 
-    var id: UUID = UUID()
+    var id: String
     let name: String
     var points: Int
     var frequency: Frequency

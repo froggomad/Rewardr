@@ -20,7 +20,8 @@ class ChildrenCollectionViewController: UICollectionViewController {
     //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        DatabaseService().createParent(firstName: "Kenny", lastName: "Dubroff")
+        DatabaseService().update(child: BELLA)
     }
 
     override func viewWillAppear(_ animated: Bool) {

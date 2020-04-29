@@ -24,6 +24,11 @@
 		B92AD209244E8DA100060897 /* ParentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AD208244E8DA100060897 /* ParentController.swift */; };
 		B92AD22F244F85D900060897 /* ChildDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AD22E244F85D800060897 /* ChildDetailViewController.swift */; };
 		B9498EAE2456608200DE7761 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9498EAD2456608200DE7761 /* GoogleService-Info.plist */; };
+		B9498EB22456861100DE7761 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9498EB12456861100DE7761 /* LoginViewController.swift */; };
+		B9498EB4245687F300DE7761 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9498EB3245687F300DE7761 /* AuthService.swift */; };
+		B9498EB62456A39800DE7761 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9498EB52456A39800DE7761 /* Auth.storyboard */; };
+		B9498EBB2456A3C600DE7761 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9498EBA2456A3C600DE7761 /* AuthViewController.swift */; };
+		B9498EBD2456A9E600DE7761 /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */; };
 		B9710638245010000081F564 /* ChoresDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9710637245010000081F564 /* ChoresDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +54,13 @@
 		B92AD208244E8DA100060897 /* ParentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentController.swift; sourceTree = "<group>"; };
 		B92AD22E244F85D800060897 /* ChildDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildDetailViewController.swift; sourceTree = "<group>"; };
 		B9498EAD2456608200DE7761 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B9498EB12456861100DE7761 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B9498EB3245687F300DE7761 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		B9498EB52456A39800DE7761 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		B9498EBA2456A3C600DE7761 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		B9710637245010000081F564 /* ChoresDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresDetailViewController.swift; sourceTree = "<group>"; };
+		B9F984B62458BEE1008C30D4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C7B29122E09F9998532A24FD /* Pods_Rewardr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rewardr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,6 +122,7 @@
 				B92AD1A8244D4DD100060897 /* SceneDelegate.swift */,
 				B92AD1AF244D4DD300060897 /* Assets.xcassets */,
 				B92AD1B4244D4DD300060897 /* Info.plist */,
+				B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -118,6 +130,7 @@
 		B92AD1BB244D4E6300060897 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				B9498EB52456A39800DE7761 /* Auth.storyboard */,
 				B92AD1AC244D4DD100060897 /* Main.storyboard */,
 				B92AD1B1244D4DD300060897 /* LaunchScreen.storyboard */,
 			);
@@ -137,9 +150,12 @@
 		B92AD1BE244D4E9900060897 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9498EB92456A3B400DE7761 /* Login Storyboard */,
 				B92AD206244E8BDF00060897 /* ChildrenCollectionViewController.swift */,
+				B9F984B62458BEE1008C30D4 /* README.md */,
 				B92AD22E244F85D800060897 /* ChildDetailViewController.swift */,
 				B9710637245010000081F564 /* ChoresDetailViewController.swift */,
+				B9498EB12456861100DE7761 /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -170,6 +186,7 @@
 			children = (
 				B92AD1CD244DDFCF00060897 /* NetworkService.swift */,
 				B92AD200244E775100060897 /* DatabaseService.swift */,
+				B9498EB3245687F300DE7761 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -196,6 +213,14 @@
 				B92AD204244E81DE00060897 /* ChildCollectionViewCell.swift */,
 			);
 			path = "Collection View";
+			sourceTree = "<group>";
+		};
+		B9498EB92456A3B400DE7761 /* Login Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B9498EBA2456A3C600DE7761 /* AuthViewController.swift */,
+			);
+			path = "Login Storyboard";
 			sourceTree = "<group>";
 		};
 		C8E286A54F0320EBB16F88ED /* Pods */ = {
@@ -269,6 +294,7 @@
 			files = (
 				B92AD1B3244D4DD300060897 /* LaunchScreen.storyboard in Resources */,
 				B9498EAE2456608200DE7761 /* GoogleService-Info.plist in Resources */,
+				B9498EB62456A39800DE7761 /* Auth.storyboard in Resources */,
 				B92AD1B0244D4DD300060897 /* Assets.xcassets in Resources */,
 				B92AD1AE244D4DD100060897 /* Main.storyboard in Resources */,
 			);
@@ -323,9 +349,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9498EB22456861100DE7761 /* LoginViewController.swift in Sources */,
 				B92AD22F244F85D900060897 /* ChildDetailViewController.swift in Sources */,
 				B92AD205244E81DE00060897 /* ChildCollectionViewCell.swift in Sources */,
 				B92AD201244E775100060897 /* DatabaseService.swift in Sources */,
+				B9498EBB2456A3C600DE7761 /* AuthViewController.swift in Sources */,
 				B9710638245010000081F564 /* ChoresDetailViewController.swift in Sources */,
 				B92AD1CE244DDFCF00060897 /* NetworkService.swift in Sources */,
 				B92AD1A7244D4DD100060897 /* AppDelegate.swift in Sources */,
@@ -334,6 +362,8 @@
 				B92AD1A9244D4DD100060897 /* SceneDelegate.swift in Sources */,
 				B92AD1C2244D4F0E00060897 /* Chore.swift in Sources */,
 				B92AD1C4244D4F2300060897 /* Reward.swift in Sources */,
+				B9498EB4245687F300DE7761 /* AuthService.swift in Sources */,
+				B9498EBD2456A9E600DE7761 /* UIColor+Colors.swift in Sources */,
 				B92AD1C8244D4F4000060897 /* Parent.swift in Sources */,
 				B92AD209244E8DA100060897 /* ParentController.swift in Sources */,
 			);

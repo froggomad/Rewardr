@@ -7,13 +7,42 @@
 //
 
 import Foundation
+import FirebaseDatabase
+import FirebaseAuth
 
 class DatabaseService {
+    //MARK: - Firebase -
+    private let _DB_BASE = Database.database().reference()
+    private lazy var _REF_PARENTS = _DB_BASE.child("parent")
+
+
+    func createParent(firstName: String, lastName: String) {
+        if let userID = Auth.auth().currentUser?.uid {
+            var parent = Parent(id: userID,
+                                firstName: firstName,
+                                lastName: lastName,
+                                children: [],
+                                rewards: [])
+
+            _REF_PARENTS.child(parent.id).setValue(parent.parentDict)
+        }
+    }
+
+    func createChild() {
+//        let child = Child(id: , parent: <#T##Parent#>, firstName: <#T##String#>, lastName: <#T##String#>, displayName: <#T##String#>)
+    }
+
+
+
+
+
+
+    //MARK: - REST -
     private let baseURL = URL(string: "https://rewardr-12eca.firebaseio.com")!
     private lazy var parentURL = baseURL.appendingPathComponent("parent")
 
     func downloadChildren(from parent: Parent, complete: @escaping ([Child]?) -> Void) {
-        let parentJSONURL = parentURL.appendingPathComponent(parent.id.uuidString)
+        let parentJSONURL = parentURL.appendingPathComponent(parent.id)
             .appendingPathExtension("json")
         guard let downloadRequest = NetworkService.createRequest(url: parentJSONURL,
                                                                  method: .get,
@@ -37,8 +66,8 @@ class DatabaseService {
     }
 
     func update(child: Child) {
-        let childURL = parentURL.appendingPathComponent(child.parentId.uuidString)
-            .appendingPathComponent("children").appendingPathComponent(child.id.uuidString).appendingPathExtension("json")
+        let childURL = parentURL.appendingPathComponent(child.parentId)
+            .appendingPathComponent("children").appendingPathComponent(child.id).appendingPathExtension("json")
         let childData = try! JSONEncoder().encode(child)
         guard var childUpdateRequest = NetworkService.createRequest(url: childURL, method: .patch) else {
 
