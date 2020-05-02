@@ -9,11 +9,14 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseFunctions
 
 class DatabaseService {
     //MARK: - Firebase -
     private let _DB_BASE = Database.database().reference()
     private lazy var _REF_PARENTS = _DB_BASE.child("parent")
+    private lazy var functions = Functions.functions()
+    private let addChildIdentifier = "createUser"
 
     //MARK: - create/update parent -
     func updateParent(firstName: String, lastName: String) {
@@ -35,16 +38,19 @@ class DatabaseService {
                      chores: [Chore]?,
                      username: String,
                      password: String) {
-
-
-        AuthService().registerUser(with: username, and: password) { (status, error, user) in
+        let funcCallDict = [
+            "userEmail":username,
+            "password":password,
+            "parentID":parent.id
+        ]
+        functions.httpsCallable(addChildIdentifier).call(funcCallDict) { (result, error) in
             if let error = error {
-                print("Error registering child: \(error)")
-                return
+                dump(error)
+                fatalError("Functions error: \(error)")
             }
-            if status {
-                guard let user = user else { return }
-                var child = Child(id: user.uid,
+            if let result = result?.data as? [String:String] {
+                let childID = result["message"] ?? ""
+                var child = Child(id: childID,
                                   parent: parent,
                                   firstName: firstName,
                                   lastName: lastName,

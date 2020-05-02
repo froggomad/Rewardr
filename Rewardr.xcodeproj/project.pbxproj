@@ -62,6 +62,7 @@
 		B9498EBA2456A3C600DE7761 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		B9710637245010000081F564 /* ChoresDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresDetailViewController.swift; sourceTree = "<group>"; };
+		B97B1860245E08CE00F36A3F /* App-Flow.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App-Flow.md"; sourceTree = "<group>"; };
 		B9F984B7245A34A2008C30D4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		B9F984BA245A6AAA008C30D4 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		B9F984BC245AA2CD008C30D4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -110,9 +111,7 @@
 		B92AD1A5244D4DD100060897 /* Rewardr */ = {
 			isa = PBXGroup;
 			children = (
-				B92AD1C0244D4F0000060897 /* Model */,
-				B92AD1BC244D4E6E00060897 /* View */,
-				B92AD1BF244D4EA500060897 /* Controller */,
+				B97B185F245E08B200F36A3F /* App */,
 				B92AD1BA244D4E4300060897 /* Resources */,
 			);
 			path = Rewardr;
@@ -128,6 +127,7 @@
 				B92AD1AF244D4DD300060897 /* Assets.xcassets */,
 				B92AD1B4244D4DD300060897 /* Info.plist */,
 				B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */,
+				B97B1860245E08CE00F36A3F /* App-Flow.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -150,8 +150,7 @@
 				B92AD202244E81AE00060897 /* Custom Cells */,
 				B92AD1BB244D4E6300060897 /* Storyboards */,
 			);
-			name = View;
-			path = View/View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		B92AD1BE244D4E9900060897 /* View Controllers */ = {
@@ -226,6 +225,16 @@
 				B9498EBA2456A3C600DE7761 /* AuthViewController.swift */,
 			);
 			path = "Login Storyboard";
+			sourceTree = "<group>";
+		};
+		B97B185F245E08B200F36A3F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B92AD1C0244D4F0000060897 /* Model */,
+				B92AD1BC244D4E6E00060897 /* View */,
+				B92AD1BF244D4EA500060897 /* Controller */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		B9F984B9245A6A6C008C30D4 /* Custom Views */ = {
