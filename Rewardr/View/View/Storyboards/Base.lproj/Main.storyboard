@@ -152,7 +152,7 @@
         <!--Chores Detail View Controller-->
         <scene sceneID="lBc-3K-S5Y">
             <objects>
-                <viewController id="wGl-nx-dgi" customClass="ChoresDetailViewController" customModule="Rewardr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChoreDetail" id="wGl-nx-dgi" customClass="ChoresDetailViewController" customModule="Rewardr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DiH-g5-Nek">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

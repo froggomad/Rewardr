@@ -49,7 +49,7 @@ class WelcomeViewController: UIViewController {
                 let username = usernameTextfield?.text, username != "",
                 let password = passwordTextfield?.text, password != ""
             else { return }
-            DatabaseService().updateChild(for: KENNY,
+            DatabaseService().createChild(for: KENNY,
                                           with: firstName,
                                           lastName: lastName,
                                           displayName: displayName,

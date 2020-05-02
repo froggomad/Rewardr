@@ -16,6 +16,8 @@ class CustomButton: UIButton {
         layer.shadowOffset = CGSize(width: -2,
                                          height: -2)
         layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
+
         setTitleColor(.white, for: .normal)
         setTitleShadowColor(.tertiary, for: .normal)
         titleLabel?.shadowOffset = CGSize(width: -3,
@@ -24,26 +26,38 @@ class CustomButton: UIButton {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        layer.cornerRadius = 8
+        layer.shadowOffset = CGSize(width: -2,
+                                         height: -2)
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 1
 
+        setTitleColor(.white, for: .normal)
+        setTitleShadowColor(.tertiary, for: .normal)
+        titleLabel?.shadowOffset = CGSize(width: -2,
+                                          height: -2)
     }
 
 }
 
-@IBDesignable
 class LoginButton: CustomButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .secondary
+        self.frame.size.height = frame.size.height * 1.5
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         backgroundColor = .secondary
+        frame.size.height = frame.size.height * 1.5
     }
 }
 
 class LogoutButton: CustomButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .action
     }
 
     required init?(coder: NSCoder) {

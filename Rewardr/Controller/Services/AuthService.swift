@@ -12,14 +12,16 @@ import FirebaseAuth
 class AuthService {
 
     //MARK: - Register -
-    func registerUser(with email: String, and password: String, registrationComplete: @escaping (_ status: Bool, _ error: Error?) -> Void) {
+    func registerUser(with email: String,
+                      and password: String,
+                      registrationComplete: @escaping (_ status: Bool, _ error: Error?, _ user: User?) -> Void) {
         Auth.auth().createUser(withEmail: email,
                                password: password) { (result, error) in
                                 if error != nil {
-                                    registrationComplete(false, error)
+                                    registrationComplete(false, error, nil)
                                     return
                                 }
-                                registrationComplete(true, nil)
+                                registrationComplete(true, nil, result?.user)
         }
     }
 

@@ -25,12 +25,18 @@ class AuthViewController: UIViewController {
                                     if let error = error {
                                         print("Error logging in: \(error)")
                                         AuthService().registerUser(with: username,
-                                                                   and: password) { (status, error) in
+                                                                   and: password) { (status, error, _) in
                                                                     if let error = error {
                                                                         print(error)
                                                                         return
                                                                     } else {
-                                                                        self.dismiss(animated: true)
+
+                                                                        let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: Bundle(identifier: "main"))
+                                                                        guard let addChildVC = onboardingStoryboard.instantiateViewController(identifier: "AddChild") as? WelcomeViewController else { return }
+                                                                        let navC = UINavigationController(rootViewController: addChildVC)
+                                                                        navC.modalPresentationStyle = .fullScreen
+                                                                        self.present(navC, animated: true)
+
                                                                     }
                                                                     return
                                         }
@@ -39,6 +45,11 @@ class AuthViewController: UIViewController {
                                                          completion: nil)
                                         }
                                     }
+                                    if status != false {
+                                        self.dismiss(animated: true,
+                                                     completion: nil)
+                                    }
+
         }
     }
 
@@ -53,6 +64,7 @@ class AuthViewController: UIViewController {
     }
 
     func setupViews() {
+        guard isViewLoaded else { return }
         emailField.layer.cornerRadius = 8
         passwordField.layer.cornerRadius = 8
         loginButton.layer.cornerRadius = 8

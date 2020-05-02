@@ -36,6 +36,16 @@ struct Chore: Codable, Equatable {
     var dueDate: Date
     var complete: Bool = false
     var image: URL? = nil
+    lazy var choreDict: [String: Any] = [
+        "id":id,
+        "name":name,
+        "points":points,
+        "frequency":frequency,
+        "dueDate":dueDate,
+        "complete":complete,
+        "image":image
+    ]
+
     // MARK: Codable
     enum CodingKeys: String, CodingKey {
         case id

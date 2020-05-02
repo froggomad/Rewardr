@@ -76,12 +76,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dx-7c-UiT">
-                                <rect key="frame" x="40" y="438.5" width="334" height="39"/>
-                                <color key="backgroundColor" name="Action"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dx-7c-UiT" customClass="LoginButton" customModule="Rewardr" customModuleProvider="target">
+                                <rect key="frame" x="40" y="438.5" width="334" height="27"/>
+                                <color key="backgroundColor" name="Secondary"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <size key="titleShadowOffset" width="-1" height="-1"/>
-                                <state key="normal" title="  Login/Register  ">
+                                <color key="tintColor" name="Accent"/>
+                                <size key="titleShadowOffset" width="-2" height="-2"/>
+                                <state key="normal" title="  Login/Register  " image="arrow.right" catalog="system">
                                     <color key="titleColor" name="Accent"/>
                                     <color key="titleShadowColor" name="Tertiary"/>
                                 </state>
@@ -116,14 +117,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <namedColor name="Accent">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Action">
-            <color red="0.74901960784313726" green="0.015686274509803921" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Primary">
             <color red="0.16078431372549021" green="0.37254901960784315" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Secondary">
+            <color red="0.16470588235294117" green="0.58431372549019611" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Tertiary">
             <color red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
