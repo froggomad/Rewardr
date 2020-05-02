@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ChildrenCollectionViewController: UICollectionViewController {
     //MARK: - Properties -
@@ -20,26 +21,25 @@ class ChildrenCollectionViewController: UICollectionViewController {
     //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        DatabaseService().createParent(firstName: "Kenny", lastName: "Dubroff")
-        DatabaseService().update(child: BELLA)
+        //DatabaseService().createParent(firstName: "Kenny", lastName: "Dubroff")
+        //DatabaseService().update(child: BELLA)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        parentController.downloadChildren(from: KENNY) {
-            KENNY.children = self.myChildren
-        }
+        try? Auth.auth().signOut()
     }
 
     //MARK: - Navigation -
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == childDetailSegue {
             guard let destination = segue.destination as? ChildDetailViewController,
                 let childIndex = collectionView.indexPathsForSelectedItems?.first?.item else { return }
             destination.child = parentController.myChildren[childIndex]
             destination.controller = parentController
         }
-     }
+    }
 
     //MARK: - UICollectionViewDataSource -
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
