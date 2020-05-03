@@ -12,6 +12,7 @@ admin.initializeApp();
       .then(function(userRecord) {        
         const child = userRecord.uid;
         console.log('Successfully created new user:', child);
+        //return JSON
         return {
             status: 201,
             data: {
@@ -22,6 +23,7 @@ admin.initializeApp();
       //handle errors
       .catch(function(error) {
         console.log();
+        //return JSON
         return {
             status: 500,
             data: {
