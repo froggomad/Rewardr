@@ -19,48 +19,47 @@ class DatabaseService {
     private let addChildIdentifier = "createUser"
 
     //MARK: - create/update parent -
-    func updateParent(firstName: String, lastName: String) {
-        if let userID = Auth.auth().currentUser?.uid {
-            var parent = Parent(id: userID,
-                                firstName: firstName,
-                                lastName: lastName,
-                                children: [],
-                                rewards: [])
-
-            _REF_PARENTS.child(parent.id).setValue(parent.parentDict)
+    func updateParent(parent: Parent) {
+        var parent = parent
+        if let userID = Auth.auth().currentUser?.uid {            _REF_PARENTS.child(userID).setValue(parent.parentDict)
         }
     }
     //MARK: - create/update child -
     func createChild(for parent: Parent,
                      with firstName: String,
                      lastName: String,
-                     displayName: String,
+                     displayName: String?,
                      chores: [Chore]?,
                      username: String,
-                     password: String) {
+                     password: String,
+                     completion: @escaping () -> Void = { }) {
         let funcCallDict = [
-            "userEmail":username,
-            "password":password,
-            "parentID":parent.id
+            "email": username,
+            "password": password
         ]
         functions.httpsCallable(addChildIdentifier).call(funcCallDict) { (result, error) in
             if let error = error {
-                dump(error)
-                fatalError("Functions error: \(error)")
+                NSLog("error: adding child with firebase function: \(error)")
+                completion()
             }
-            if let result = result?.data as? [String:String] {
-                let childID = result["message"] ?? ""
+
+            if let httpResult = result?.data as? [String:Any] {
+                guard let dataDict = httpResult["data"] as? [String:Any] else {
+                    fatalError("bad dataDict typing")
+                }
+                let childID = dataDict["message"] as? String ?? ""
                 var child = Child(id: childID,
                                   parent: parent,
                                   firstName: firstName,
                                   lastName: lastName,
-                                  displayName: displayName,
+                                  displayName: displayName ?? firstName,
                                   chores: chores ?? [])
-                self._REF_PARENTS.child(parent.id).child("children").child(child.id).updateChildValues(child.childDict)
+                self._REF_PARENTS.child(Auth.auth().currentUser?.uid ?? "").child("children").child(child.id).updateChildValues(child.childDict) { _,_ in
+                    completion()
+                }
             }
         }
     }
-
 
     //MARK: - create/update chore -
     func updateChore(_ chore: Chore, to child: Child) {
