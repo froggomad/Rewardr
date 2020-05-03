@@ -28,7 +28,7 @@ struct Child: Codable, Equatable {
     let parentName: String
     var firstName: String
     var lastName: String
-    var displayName: String
+    var displayName: String?
     var chores: [Chore]?
     var points: Int
 
@@ -37,7 +37,7 @@ struct Child: Codable, Equatable {
         "parentName": parentName,
         "firstName": firstName,
         "lastName": lastName,
-        "displayName": displayName,
+        "displayName": displayName ?? "",
         "chores": chores ?? [],
         "points": points
     ]
@@ -57,7 +57,7 @@ struct Child: Codable, Equatable {
 
         self.id = id
         parentId = parent.id
-        parentName = "\(parent.firstName) \(parent.lastName)"
+        parentName = parent.nickName ?? "\(parent.firstName) \(parent.lastName)"
         self.firstName = firstName
         self.lastName = lastName
         self.displayName = displayName
