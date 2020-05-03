@@ -19,17 +19,12 @@ class OnboardingAddChildViewController: UIViewController {
 
     @IBAction func addChildTapped(_ sender: Any) {
         var fields: [String] = []
-        if let firstName = firstNameTextfield.text,
-            firstName == "" {
+        if firstNameTextfield.text == nil || firstNameTextfield.text == "" {
             fields.append("First Name")
         }
         if let lastName = lastNameTextfield.text,
             lastName == ""  {
                 fields.append("Last Name")
-        }
-        if let nickname = nickNameTextfield.text,
-            nickname == "" {
-                fields.append("Nickname")
         }
         if let username = usernameTextfield.text,
             username == "" {
@@ -47,22 +42,26 @@ class OnboardingAddChildViewController: UIViewController {
         } else {
             guard let firstName = firstNameTextfield?.text, firstName != "",
                 let lastName = lastNameTextfield?.text, lastName != "",
-                let displayName = nickNameTextfield?.text, displayName != "",
                 let username = usernameTextfield?.text, username != "",
-                let password = passwordTextfield?.text, password != ""
+                let password = passwordTextfield?.text, password != "",
+                let activeParent = activeParent
             else { return }
-            DatabaseService().createChild(for: KENNY,
+            let displayName = nickNameTextfield?.text
+            DatabaseService().createChild(for: activeParent,
                                           with: firstName,
                                           lastName: lastName,
                                           displayName: displayName,
                                           chores: [],
                                           username: username,
                                           password: password)
+            performSegue(withIdentifier: segueID, sender: nil)
         }
     }
 
+    //MARK: - Propeties -
     private let segueID = "OnboardingChoreSegue"
     private var child: Child?
+    var activeParent: Parent?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AuthViewController: UIViewController {
     //MARK: - IBOutlets -
     @IBOutlet weak private var emailField: UITextField!
     @IBOutlet weak private var passwordField: UITextField!
-    @IBOutlet weak private var loginButton: UIButton!
+    @IBOutlet weak private var loginButton: LoginButton!
 
+    //MARK: - Login -
     @IBAction private func login() {
         guard let username = emailField.text,
             !username.isEmpty,
@@ -30,13 +32,11 @@ class AuthViewController: UIViewController {
                                                                         print(error)
                                                                         return
                                                                     } else {
-
                                                                         let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: Bundle(identifier: "main"))
-                                                                        guard let addChildVC = onboardingStoryboard.instantiateViewController(identifier: "AddChild") as? WelcomeViewController else { return }
+                                                                        guard let addChildVC = onboardingStoryboard.instantiateViewController(identifier: "WelcomeParent") as? WelcomeViewController else { return }
                                                                         let navC = UINavigationController(rootViewController: addChildVC)
                                                                         navC.modalPresentationStyle = .fullScreen
                                                                         self.present(navC, animated: true)
-
                                                                     }
                                                                     return
                                         }
@@ -49,27 +49,18 @@ class AuthViewController: UIViewController {
                                         self.dismiss(animated: true,
                                                      completion: nil)
                                     }
-
         }
     }
-
+    //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
 
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-    }
-
     func setupViews() {
         guard isViewLoaded else { return }
-        emailField.layer.cornerRadius = 8
-        passwordField.layer.cornerRadius = 8
-        loginButton.layer.cornerRadius = 8
-        loginButton.layer.shadowColor = UIColor.tertiary.cgColor
-        loginButton.layer.shadowOffset = CGSize(width: -2,
-                                                height: 2)
+        emailField.setCornerRadius()
+        passwordField.setCornerRadius()
     }
+
 }
