@@ -29,9 +29,11 @@
 		B9498EBB2456A3C600DE7761 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9498EBA2456A3C600DE7761 /* AuthViewController.swift */; };
 		B9498EBD2456A9E600DE7761 /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */; };
 		B9710638245010000081F564 /* ChoresDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9710637245010000081F564 /* ChoresDetailViewController.swift */; };
+		B97B1864245E1E6B00F36A3F /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97B1863245E1E6B00F36A3F /* Stylesheet.swift */; };
+		B97B1866245E3F9000F36A3F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97B1865245E3F9000F36A3F /* WelcomeViewController.swift */; };
 		B9F984B8245A34A2008C30D4 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F984B7245A34A2008C30D4 /* Onboarding.storyboard */; };
 		B9F984BB245A6AAA008C30D4 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BA245A6AAA008C30D4 /* CustomButtons.swift */; };
-		B9F984BD245AA2CD008C30D4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BC245AA2CD008C30D4 /* WelcomeViewController.swift */; };
+		B9F984BD245AA2CD008C30D4 /* OnboardingAddChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */; };
 		B9F984C0245BEA8A008C30D4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BF245BEA8A008C30D4 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,9 +65,13 @@
 		B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		B9710637245010000081F564 /* ChoresDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresDetailViewController.swift; sourceTree = "<group>"; };
 		B97B1860245E08CE00F36A3F /* App-Flow.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App-Flow.md"; sourceTree = "<group>"; };
+		B97B1861245E0D6F00F36A3F /* Bugs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Bugs.md; sourceTree = "<group>"; };
+		B97B1862245E0E4400F36A3F /* TODOs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODOs.md; sourceTree = "<group>"; };
+		B97B1863245E1E6B00F36A3F /* Stylesheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
+		B97B1865245E3F9000F36A3F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		B9F984B7245A34A2008C30D4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		B9F984BA245A6AAA008C30D4 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
-		B9F984BC245AA2CD008C30D4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddChildViewController.swift; sourceTree = "<group>"; };
 		B9F984BF245BEA8A008C30D4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C7B29122E09F9998532A24FD /* Pods_Rewardr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rewardr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,6 +134,8 @@
 				B92AD1B4244D4DD300060897 /* Info.plist */,
 				B9498EBC2456A9E600DE7761 /* UIColor+Colors.swift */,
 				B97B1860245E08CE00F36A3F /* App-Flow.md */,
+				B97B1861245E0D6F00F36A3F /* Bugs.md */,
+				B97B1862245E0E4400F36A3F /* TODOs.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 				B9F984B9245A6A6C008C30D4 /* Custom Views */,
 				B92AD202244E81AE00060897 /* Custom Cells */,
 				B92AD1BB244D4E6300060897 /* Storyboards */,
+				B97B1863245E1E6B00F36A3F /* Stylesheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,7 +265,8 @@
 		B9F984C1245BEC25008C30D4 /* Onboarding Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B9F984BC245AA2CD008C30D4 /* WelcomeViewController.swift */,
+				B97B1865245E3F9000F36A3F /* WelcomeViewController.swift */,
+				B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */,
 			);
 			path = "Onboarding Storyboard";
 			sourceTree = "<group>";
@@ -404,17 +414,19 @@
 				B9498EBB2456A3C600DE7761 /* AuthViewController.swift in Sources */,
 				B9710638245010000081F564 /* ChoresDetailViewController.swift in Sources */,
 				B9F984C0245BEA8A008C30D4 /* Alert.swift in Sources */,
+				B97B1866245E3F9000F36A3F /* WelcomeViewController.swift in Sources */,
 				B92AD1CE244DDFCF00060897 /* NetworkService.swift in Sources */,
 				B92AD1A7244D4DD100060897 /* AppDelegate.swift in Sources */,
 				B92AD207244E8BDF00060897 /* ChildrenCollectionViewController.swift in Sources */,
 				B92AD1C6244D4F2F00060897 /* Child.swift in Sources */,
-				B9F984BD245AA2CD008C30D4 /* WelcomeViewController.swift in Sources */,
+				B9F984BD245AA2CD008C30D4 /* OnboardingAddChildViewController.swift in Sources */,
 				B92AD1A9244D4DD100060897 /* SceneDelegate.swift in Sources */,
 				B92AD1C2244D4F0E00060897 /* Chore.swift in Sources */,
 				B92AD1C4244D4F2300060897 /* Reward.swift in Sources */,
 				B9498EB4245687F300DE7761 /* AuthService.swift in Sources */,
 				B9F984BB245A6AAA008C30D4 /* CustomButtons.swift in Sources */,
 				B9498EBD2456A9E600DE7761 /* UIColor+Colors.swift in Sources */,
+				B97B1864245E1E6B00F36A3F /* Stylesheet.swift in Sources */,
 				B92AD1C8244D4F4000060897 /* Parent.swift in Sources */,
 				B92AD209244E8DA100060897 /* ParentController.swift in Sources */,
 			);

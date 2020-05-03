@@ -9,9 +9,10 @@
 import UIKit
 
 class ChildCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var pointsLabel: UILabel!
-    @IBOutlet weak var choresLabel: UILabel!
+    //MARK: - IBOutlets -
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var pointsLabel: UILabel!
+    @IBOutlet weak private var choresLabel: UILabel!
 
     //MARK: - properties -
     static let reuseIdentifier = "ChildCell"
@@ -25,8 +26,9 @@ class ChildCollectionViewCell: UICollectionViewCell {
     private func updateViews() {
         let padding:CGFloat = 8
         let innerView = UIView()
+        // MARK: Views
         innerView.translatesAutoresizingMaskIntoConstraints = false
-        innerView.layer.cornerRadius = 8
+        innerView.setCornerRadius()
         innerView.layer.borderColor = UIColor.black.cgColor
         innerView.layer.borderWidth = 1
         contentView.addSubview(innerView)
@@ -37,7 +39,7 @@ class ChildCollectionViewCell: UICollectionViewCell {
             innerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: padding),
             innerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -padding)
         ])
-
+        // MARK: Labels
         guard let child = child else { return }
         nameLabel.text = child.displayName
         pointsLabel.text = "Points: \(child.points)"
