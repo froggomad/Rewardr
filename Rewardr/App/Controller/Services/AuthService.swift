@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 
 class AuthService {
-
+    static var currentUserId = Auth.auth().currentUser?.uid
     //MARK: - Register -
     func registerUser(with email: String,
                       and password: String,
