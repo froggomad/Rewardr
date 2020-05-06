@@ -230,16 +230,16 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-Am-k3a" userLabel="username Stack">
                                                                 <rect key="frame" x="0.0" y="336.33333333333337" width="382" height="92.333333333333314"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJq-Ut-oSb">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJq-Ut-oSb">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="42"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(Enter A-Z)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5DF-bo-l2X">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(Ex: example@domain.com)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5DF-bo-l2X">
                                                                         <rect key="frame" x="0.0" y="50" width="382" height="42.333333333333343"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                        <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="email"/>
                                                                     </textField>
                                                                 </subviews>
                                                             </stackView>
@@ -255,7 +255,7 @@
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(Minimum 6 characters)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-c1-Is3">
                                                                         <rect key="frame" x="0.0" y="50" width="382" height="42"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="new-password"/>
                                                                     </textField>
                                                                 </subviews>
                                                             </stackView>
@@ -306,12 +306,12 @@
                     <navigationItem key="navigationItem" id="OxW-eC-Gyc"/>
                     <connections>
                         <outlet property="addChildButton" destination="dhZ-cL-DnM" id="F8a-VB-UZS"/>
+                        <outlet property="emailTextfield" destination="5DF-bo-l2X" id="ZCz-Uo-Or9"/>
                         <outlet property="firstNameTextfield" destination="apy-CM-XSN" id="yCm-Jw-fvJ"/>
                         <outlet property="formView" destination="RPh-9y-zPR" id="qFA-ep-Jln"/>
                         <outlet property="lastNameTextfield" destination="8HC-7J-ZSy" id="bdG-xE-gym"/>
                         <outlet property="nickNameTextfield" destination="Ngg-fn-fIB" id="R44-9i-O5P"/>
                         <outlet property="passwordTextfield" destination="iIW-c1-Is3" id="txT-Gd-gJY"/>
-                        <outlet property="usernameTextfield" destination="5DF-bo-l2X" id="ZCz-Uo-Or9"/>
                         <segue destination="MeF-x6-oTy" kind="show" identifier="OnboardingChoreSegue" id="yCp-Fa-oKM"/>
                     </connections>
                 </viewController>

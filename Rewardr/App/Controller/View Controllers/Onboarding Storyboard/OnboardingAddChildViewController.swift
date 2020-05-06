@@ -9,40 +9,44 @@
 import UIKit
 
 class OnboardingAddChildViewController: UIViewController {
+    //MARK: - IBOutlets -
     @IBOutlet weak private var firstNameTextfield: UITextField!
     @IBOutlet weak private var lastNameTextfield: UITextField!
     @IBOutlet weak private var nickNameTextfield: UITextField!
-    @IBOutlet weak private var usernameTextfield: UITextField!
+    @IBOutlet weak private var emailTextfield: UITextField!
     @IBOutlet weak private var passwordTextfield: UITextField!
     @IBOutlet weak private var formView: UIView!
     @IBOutlet weak private var addChildButton: LoginButton!
 
+    //MARK: - IBActions -
     @IBAction func addChildTapped(_ sender: Any) {
         var fields: [String] = []
-        if firstNameTextfield.text == nil || firstNameTextfield.text == "" {
+        if firstNameTextfield.text == "" {
             fields.append("First Name")
         }
-        if let lastName = lastNameTextfield.text,
-            lastName == ""  {
+        if lastNameTextfield.text == ""  {
             fields.append("Last Name")
         }
-        if let username = usernameTextfield.text,
-            username == "" {
-            fields.append("Username")
+        if emailTextfield.text == "" {
+            fields.append("Email Address")
         }
         if let password = passwordTextfield.text,
-            password == "" {
-            fields.append("Password")
+            password.count < 6 {
+            if password != "" {
+                fields.append("Password must be 6 or more characters")
+            } else {
+                fields.append("Password")
+            }
         }
         if !fields.isEmpty {
-            let str = fields.joined(separator: ", ")
+            let str = fields.joined(separator: ",\n")
             Alert.show(title: "Please Enter Your Child's:",
                        message: str,
                        vc: self)
         } else {
             guard let firstName = firstNameTextfield?.text, firstName != "",
                 let lastName = lastNameTextfield?.text, lastName != "",
-                let username = usernameTextfield?.text, username != "",
+                let username = emailTextfield?.text, username != "",
                 let password = passwordTextfield?.text, password != "",
                 let activeParent = activeParent
                 else { return }
@@ -71,7 +75,7 @@ class OnboardingAddChildViewController: UIViewController {
         firstNameTextfield.setCornerRadius()
         lastNameTextfield.setCornerRadius()
         nickNameTextfield.setCornerRadius()
-        usernameTextfield.setCornerRadius()
+        emailTextfield.setCornerRadius()
         passwordTextfield.setCornerRadius()
         formView.setCornerRadius()
     }

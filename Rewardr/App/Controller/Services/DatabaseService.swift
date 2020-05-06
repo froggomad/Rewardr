@@ -93,9 +93,10 @@ class DatabaseService {
             .updateChildValues(chore.choreDict())
     }
 
-    //MARK: - Read Parent -
-    func downloadParent(with id: String) {
-        
+    func getChildren(for parent: Parent) {
+        self._REF_PARENTS.child(parent.id).child("children").observeSingleEvent(of: .value) { snapshot in
+            print(snapshot)
+        }
     }
 
     //MARK: - Read Children -

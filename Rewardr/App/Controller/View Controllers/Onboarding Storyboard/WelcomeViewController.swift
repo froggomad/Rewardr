@@ -25,8 +25,8 @@ class WelcomeViewController: UIViewController {
             fields.append("Last Name")
         }
         if !fields.isEmpty {
-            let str = fields.joined(separator: ", ")
-            Alert.show(title: "Please Enter Your Child's:",
+            let str = fields.joined(separator: "\n")
+            Alert.show(title: "Please Enter Your:",
                        message: str,
                        vc: self)
         } else {
