@@ -101,7 +101,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                                 <size key="titleShadowOffset" width="-3" height="-3"/>
-                                                                <state key="normal" title="  Done, let's add chores  ">
+                                                                <state key="normal" title="  Done, let's add a child">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <color key="titleShadowColor" name="Tertiary"/>
                                                                 </state>
@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASi-IQ-m2W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="885.50724637681162" y="115.7608695652174"/>
+            <point key="canvasLocation" x="878" y="113"/>
         </scene>
         <!--Onboarding Add Child View Controller-->
         <scene sceneID="sAg-un-HCf">
@@ -317,25 +317,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovj-2o-hk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1564" y="114"/>
+            <point key="canvasLocation" x="1668" y="113"/>
         </scene>
-        <!--View Controller-->
+        <!--Container View Controller-->
         <scene sceneID="2CM-In-R7D">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="MeF-x6-oTy" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="MeF-x6-oTy" customClass="ContainerViewController" customModule="Rewardr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qP7-Wu-d8K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKu-HU-eS4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="646"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="616"/>
                                 <connections>
                                     <segue destination="NjX-LS-EHZ" kind="embed" identifier="ChoreEmbedSegue" id="LgI-1b-vg4"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWZ-Ut-GmO" customClass="LoginButton" customModule="Rewardr" customModuleProvider="target">
-                                <rect key="frame" x="20" y="698" width="374" height="30"/>
+                                <rect key="frame" x="20" y="668" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="cYU-Pa-Icx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <state key="normal" title="Save Chore"/>
+                                <connections>
+                                    <action selector="saveChoreTapped:" destination="MeF-x6-oTy" eventType="touchUpInside" id="KaF-Kg-paL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Primary"/>
@@ -354,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atj-8r-DTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="115"/>
+            <point key="canvasLocation" x="2461" y="113"/>
         </scene>
         <!--ChoreDetail-->
         <scene sceneID="HUR-b9-n98">

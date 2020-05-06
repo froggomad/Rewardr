@@ -8,23 +8,37 @@
 
 import UIKit
 
-class ContainerViewController: UIViewController {
+protocol OnboardingChoreDelegate: class {
+    func saveChore()
+}
 
+class ContainerViewController: UIViewController {
+    //MARK: - Properties -
+    private let choreEmbedSegueID = "ChoreEmbedSegue"
+    private var choreDetailVC: OnboardingChoreDelegate?
+    var child: Child?
+
+    @IBAction func saveChoreTapped (_ sender: UIButton) {
+        choreDetailVC?.saveChore()
+    }
+
+    //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == choreEmbedSegueID {
+            guard let destination = segue.destination as? ChoresDetailViewController else { return }
+            choreDetailVC = destination
+            destination.controller = ParentController(delegate: nil)
+            destination.child = child
+        }
+
     }
-    */
+
 
 }

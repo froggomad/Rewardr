@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class AuthService {
     static var currentUserId = Auth.auth().currentUser?.uid
+    static var activeParent: Parent?
     //MARK: - Register -
     func registerUser(with email: String,
                       and password: String,

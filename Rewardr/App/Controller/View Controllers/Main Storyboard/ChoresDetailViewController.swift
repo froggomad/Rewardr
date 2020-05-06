@@ -12,13 +12,13 @@ protocol ChildReceiver: class {
     func receiveChild(_ child: Child)
 }
 
-class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
+class ChoresDetailViewController: UIViewController, UIPickerViewDelegate, OnboardingChoreDelegate {
     //MARK: - Properties -
     var chore: Chore?
     var child: Child?
     var controller: ParentController?
     weak var delegate: ChildReceiver?
-    var edited = false //one way switch
+    private var edited = false //one way switch
 
     //MARK: - Outlets -
     @IBOutlet private weak var choreNameTextField: UITextField!
@@ -46,7 +46,16 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
                            complete: chore?.complete ?? false,
                            image: nil)
         //updates in willDisappear
-        navigationController?.popViewController(animated: true)
+        if controller?.childDelegate == nil {
+            let onboardingStoryboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "main"))
+            guard let addChildVC = onboardingStoryboard.instantiateViewController(identifier: "ChildrenList") as? ChildrenCollectionViewController else { return }
+            let navC = UINavigationController(rootViewController: addChildVC)
+            navC.modalPresentationStyle = .fullScreen
+            navC.navigationBar.backItem?.backBarButtonItem = nil
+            self.present(navC, animated: true)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 
     //MARK: - Editing -
@@ -117,7 +126,9 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate {
 
      // MARK: - Navigation -
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
+
+
      }
 }
 

@@ -34,6 +34,35 @@ struct Parent: Codable, Equatable {
     "children":children,
     "rewards":rewards
     ]
+
+    init(id: String,
+    nickName: String? = nil,
+    firstName: String,
+    lastName: String,
+    children: [Child]? = nil,
+    rewards: [Reward]? = nil) {
+        self.id = id
+        self.nickName = nickName
+        self.firstName = firstName
+        self.lastName = lastName
+        self.children = children ?? []
+        self.rewards = rewards ?? []
+
+    }
+
+    init?(parentDict: [String:Any]) {
+        guard let id = parentDict["id"] as? String,
+            let firstName = parentDict["firstName"] as? String,
+            let lastName = parentDict["lastName"] as? String
+        else { return nil }
+        self.id = id
+        self.nickName = parentDict["nickname"] as? String ?? nil
+        self.firstName = firstName
+        self.lastName = lastName
+        #warning("TODO: Fix this:")
+        self.children = []
+        self.rewards = []
+    }
     
     // MARK: Equatable
     static func == (lhs: Parent, rhs: Parent) -> Bool {

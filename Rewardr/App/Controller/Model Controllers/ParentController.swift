@@ -30,18 +30,18 @@ class ParentController {
         self.childDelegate = delegate
     }
 
-    func downloadChildren(from parent: Parent, complete: @escaping () -> Void = { })  {
-//        databaseService.downloadChildren(from: parent) { children in
-//            guard let children = children else { return }
-//            DispatchQueue.main.async {
-//                self.myChildren = children
-//                complete()
-//            }
-//        }
+    func downloadChildren(for parent: Parent, complete: @escaping () -> Void = { })  {
+        databaseService.downloadChildren(for: parent) { children in
+            guard let children = children else { return }
+            DispatchQueue.main.async {
+                self.myChildren = children
+                complete()
+            }
+        }
     }
 
     func updateChild(_ child: Child) {
-
+        databaseService.updateChild(child: child)
     }
 
     func updateChore(chore: Chore, child: inout Child) {

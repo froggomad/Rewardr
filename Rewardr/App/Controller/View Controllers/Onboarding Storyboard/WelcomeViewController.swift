@@ -37,7 +37,7 @@ class WelcomeViewController: UIViewController {
                 else { return }
             let knownName = nickNameTextField.text ?? firstName
             let parent = Parent(id: AuthService.currentUserId ?? "",
-                                  nickName: knownName, firstName: firstName, lastName: lastName, children: [], rewards: [], knownName: knownName)
+                                  nickName: knownName, firstName: firstName, lastName: lastName, children: [], rewards: [])
             DatabaseService().updateParent(parent: parent)
             activeParent = parent
             performSegue(withIdentifier: addChildSegueID, sender: self)

@@ -32,15 +32,26 @@ struct Child: Codable, Equatable {
     var chores: [Chore]?
     var points: Int
 
-    lazy var childDict: [String:Any] = [
-        "parentId": parentId,
-        "parentName": parentName,
-        "firstName": firstName,
-        "lastName": lastName,
-        "displayName": displayName ?? "",
-        "chores": chores ?? [],
-        "points": points
-    ]
+    func childDetails() -> [String:Any] {
+        var choreDictArray: [[String:Any]]? {
+            guard let chores = self.chores else { return nil }
+            var choreDictArray: [Dictionary<String,Any>] = []
+            for chore in chores {
+                choreDictArray.append(chore.choreDict())
+            }
+            return choreDictArray
+        }
+
+        return [
+            "parentId": parentId,
+            "parentName": parentName,
+            "firstName": firstName,
+            "lastName": lastName,
+            "displayName": displayName ?? "",
+            "chores": choreDictArray ?? [],
+            "points": points
+            ] as [String : Any]
+    }
 
     // MARK: Equatable
     static func == (lhs: Child, rhs: Child) -> Bool {

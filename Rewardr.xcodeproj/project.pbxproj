@@ -31,6 +31,7 @@
 		B9710638245010000081F564 /* ChoresDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9710637245010000081F564 /* ChoresDetailViewController.swift */; };
 		B97B1864245E1E6B00F36A3F /* Stylesheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97B1863245E1E6B00F36A3F /* Stylesheet.swift */; };
 		B97B1866245E3F9000F36A3F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97B1865245E3F9000F36A3F /* WelcomeViewController.swift */; };
+		B97B1868245FE8CC00F36A3F /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97B1867245FE8CC00F36A3F /* ContainerViewController.swift */; };
 		B9F984B8245A34A2008C30D4 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F984B7245A34A2008C30D4 /* Onboarding.storyboard */; };
 		B9F984BB245A6AAA008C30D4 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BA245A6AAA008C30D4 /* CustomButtons.swift */; };
 		B9F984BD245AA2CD008C30D4 /* OnboardingAddChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */; };
@@ -69,6 +70,7 @@
 		B97B1862245E0E4400F36A3F /* TODOs.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODOs.md; sourceTree = "<group>"; };
 		B97B1863245E1E6B00F36A3F /* Stylesheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylesheet.swift; sourceTree = "<group>"; };
 		B97B1865245E3F9000F36A3F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		B97B1867245FE8CC00F36A3F /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		B9F984B7245A34A2008C30D4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		B9F984BA245A6AAA008C30D4 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddChildViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				B97B1865245E3F9000F36A3F /* WelcomeViewController.swift */,
 				B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */,
+				B97B1867245FE8CC00F36A3F /* ContainerViewController.swift */,
 			);
 			path = "Onboarding Storyboard";
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				B9F984BD245AA2CD008C30D4 /* OnboardingAddChildViewController.swift in Sources */,
 				B92AD1A9244D4DD100060897 /* SceneDelegate.swift in Sources */,
 				B92AD1C2244D4F0E00060897 /* Chore.swift in Sources */,
+				B97B1868245FE8CC00F36A3F /* ContainerViewController.swift in Sources */,
 				B92AD1C4244D4F2300060897 /* Reward.swift in Sources */,
 				B9498EB4245687F300DE7761 /* AuthService.swift in Sources */,
 				B9F984BB245A6AAA008C30D4 /* CustomButtons.swift in Sources */,
@@ -573,15 +577,18 @@
 			baseConfigurationReference = 6B49C1DBED7436464D1A5243 /* Pods-Rewardr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34P4RF23ET;
 				INFOPLIST_FILE = Rewardr/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hazystudios.Rewardr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -592,15 +599,18 @@
 			baseConfigurationReference = 5064FC77415928AD0DD96075 /* Pods-Rewardr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34P4RF23ET;
 				INFOPLIST_FILE = Rewardr/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hazystudios.Rewardr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

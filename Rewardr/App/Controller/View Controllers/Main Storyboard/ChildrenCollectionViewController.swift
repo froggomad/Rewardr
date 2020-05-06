@@ -21,8 +21,11 @@ class ChildrenCollectionViewController: UICollectionViewController {
     //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        //DatabaseService().createParent(firstName: "Kenny", lastName: "Dubroff")
-        //DatabaseService().update(child: BELLA)
+
+        guard let parent = AuthService.activeParent else { return }
+        parentController.downloadChildren(for: parent) {
+            print("FUCK YEAH")
+        }
 
     }
 

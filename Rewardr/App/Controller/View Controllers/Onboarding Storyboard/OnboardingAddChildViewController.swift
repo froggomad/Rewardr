@@ -24,15 +24,15 @@ class OnboardingAddChildViewController: UIViewController {
         }
         if let lastName = lastNameTextfield.text,
             lastName == ""  {
-                fields.append("Last Name")
+            fields.append("Last Name")
         }
         if let username = usernameTextfield.text,
             username == "" {
-                fields.append("Username")
+            fields.append("Username")
         }
         if let password = passwordTextfield.text,
             password == "" {
-                fields.append("Password")
+            fields.append("Password")
         }
         if !fields.isEmpty {
             let str = fields.joined(separator: ", ")
@@ -45,7 +45,7 @@ class OnboardingAddChildViewController: UIViewController {
                 let username = usernameTextfield?.text, username != "",
                 let password = passwordTextfield?.text, password != "",
                 let activeParent = activeParent
-            else { return }
+                else { return }
             let displayName = nickNameTextfield?.text
             DatabaseService().createChild(for: activeParent,
                                           with: firstName,
@@ -53,8 +53,11 @@ class OnboardingAddChildViewController: UIViewController {
                                           displayName: displayName,
                                           chores: [],
                                           username: username,
-                                          password: password)
-            performSegue(withIdentifier: segueID, sender: nil)
+                                          password: password) { child in
+                                            self.child = child
+                                            self.performSegue(withIdentifier: self.segueID, sender: nil)
+            }
+
         }
     }
 
@@ -76,11 +79,9 @@ class OnboardingAddChildViewController: UIViewController {
     // MARK: - Navigation -
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueID {
-            guard let destination = segue.destination as? ChoresDetailViewController else { return }
+            guard let destination = segue.destination as? ContainerViewController else { return }
             destination.child = child
-            destination.controller = ParentController(delegate: nil)
         }
     }
-
 
 }
