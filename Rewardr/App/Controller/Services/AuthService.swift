@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 
 class AuthService {
+
     static var currentUserId = Auth.auth().currentUser?.uid
     static var activeParent: Parent?
     //MARK: - Register -
@@ -27,13 +28,19 @@ class AuthService {
     }
 
     //MARK: - Login -
-    func loginUser(withEmail email: String, andPassword password: String, loginComplete: @escaping (_ status: Bool, _ error: Error?) -> Void) {
+    enum UserType {
+        case parent
+        case child
+    }
+    
+    func loginUser(withEmail email: String, andPassword password: String, loginComplete: @escaping (_ status: Bool, _ error: Error?, _ userType: UserType?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                loginComplete(false, error)
+                loginComplete(false, error, nil)
                 return
             }
-            loginComplete(true, nil)
+            #warning("TODO: Determine which type of user this is based on read access to children node (if false, it's a parent. They can only write there)")
+            loginComplete(true, nil, .parent)
         }
     }
 }

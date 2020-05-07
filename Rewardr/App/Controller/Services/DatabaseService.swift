@@ -60,14 +60,16 @@ class DatabaseService {
                                   lastName: lastName,
                                   displayName: displayName ?? firstName,
                                   chores: chores ?? [])
-                if child.parentId == AuthService.currentUserId {
+                if child.parentId == Auth.auth().currentUser?.uid {
                     #warning("TODO: Error handling")
                     //create child ID for parent
                     self._REF_PARENTS.child(Auth.auth().currentUser?.uid ?? "error").child("children").child(child.id).updateChildValues(child.childDetails()) { _,_ in
-                        //create parent ID to login child
+                        //create parent ID used to login child
                         self._REF_CHILDREN.child(childID).child("parentID").setValue(Auth.auth().currentUser?.uid ?? "error")
                         completion(child)
                     }
+                } else {
+                    print("child.parentId != Auth.auth().currentuser?.uid")
                 }
             }
         }
@@ -121,7 +123,14 @@ class DatabaseService {
         }
     }
 
-    func downloadChildDetails(for id: String) {
+    func getParentID(for id: String) {
 
+    }
+
+    func downloadChildDetails(for id: String, complete: @escaping (_ isChild: Bool) -> Void) {
+        _REF_CHILDREN.child(id).observeSingleEvent(of: .value) { snapshot in
+            complete(snapshot.exists())
+        }
+        complete(false)
     }
 }

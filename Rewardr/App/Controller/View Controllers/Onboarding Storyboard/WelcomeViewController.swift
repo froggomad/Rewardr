@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
     //MARK: - IBOutlets -
@@ -36,7 +37,7 @@ class WelcomeViewController: UIViewController {
                 lastName != ""
                 else { return }
             let knownName = nickNameTextField.text ?? firstName
-            let parent = Parent(id: AuthService.currentUserId ?? "",
+            let parent = Parent(id: Auth.auth().currentUser?.uid ?? "",
                                   nickName: knownName, firstName: firstName, lastName: lastName, children: [], rewards: [])
             DatabaseService().updateParent(parent: parent)
             activeParent = parent

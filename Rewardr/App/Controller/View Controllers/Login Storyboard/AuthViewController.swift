@@ -17,13 +17,24 @@ class AuthViewController: UIViewController {
 
     //MARK: - Login -
     @IBAction private func login() {
+        var fields: [String] = []
+        if emailField.text == "" {
+            fields.append("Email")
+        }
+        if passwordField.text == "" {
+            fields.append("Password")
+        }
+        if !fields.isEmpty {
+            let fields = fields.joined(separator: ",\n")
+            Alert.show(title: "Please Enter Your:", message: fields, vc: self)
+        }
         guard let username = emailField.text,
             !username.isEmpty,
             let password = passwordField.text,
             !password.isEmpty
             else { return }
         AuthService().loginUser(withEmail: username,
-                                andPassword: password) { (status, error) in
+                                andPassword: password) { (status, error, isChild) in
                                     if let error = error {
                                         print("Error logging in: \(error)")
                                         AuthService().registerUser(with: username,

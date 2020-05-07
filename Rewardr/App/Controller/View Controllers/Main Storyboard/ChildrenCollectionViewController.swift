@@ -21,17 +21,20 @@ class ChildrenCollectionViewController: UICollectionViewController {
     //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        DatabaseService().downloadChildDetails(for: Auth.auth().currentUser?.uid ?? "no") { (isChild) in
+            print(isChild)
+        }
         guard let parent = AuthService.activeParent else { return }
         parentController.downloadChildren(for: parent) {
-            print("FUCK YEAH")
+            print("Success")
         }
+
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try? Auth.auth().signOut()
+        //try? Auth.auth().signOut()
     }
 
     //MARK: - Navigation -
