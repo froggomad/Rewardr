@@ -10,7 +10,10 @@ import Foundation
 import FirebaseAuth
 
 class AuthService {
-
+    enum UserType {
+        case parent
+        case child
+    }
     static var currentUserId = Auth.auth().currentUser?.uid
     static var activeParent: Parent?
     //MARK: - Register -
@@ -28,11 +31,6 @@ class AuthService {
     }
 
     //MARK: - Login -
-    enum UserType {
-        case parent
-        case child
-    }
-    
     func loginUser(withEmail email: String, andPassword password: String, loginComplete: @escaping (_ status: Bool, _ error: Error?, _ userType: UserType?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
