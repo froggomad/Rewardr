@@ -51,16 +51,34 @@ struct Parent: Codable, Equatable {
     }
 
     init?(parentDict: [String:Any]) {
-        guard let id = parentDict["id"] as? String,
-            let firstName = parentDict["firstName"] as? String,
-            let lastName = parentDict["lastName"] as? String
+        guard let id = parentDict.keys.first,
+            let dictionary = parentDict.values.first as? [String:Any],
+            let firstName = dictionary["firstName"] as? String,
+            let lastName = dictionary["lastName"] as? String
         else { return nil }
+
         self.id = id
-        self.nickName = parentDict["nickname"] as? String ?? nil
+        self.nickName = dictionary["nickname"] as? String ?? nil
         self.firstName = firstName
         self.lastName = lastName
-        #warning("TODO: Fix this:")
-        self.children = []
+        //handle children
+        guard let childArray = dictionary["children"] as? [String:Any] else {
+            self.children = []
+            self.rewards = []
+            return
+        }
+
+        func appendChildren() -> [Child] {
+            var children = [String:Child]()
+            for (id, child) in childArray {
+                children[id] = Child(childDict: [id:child])
+            }
+            //remove nil values, childDict init is failable
+            return children.compactMap { $1 }
+        }
+        self.children = appendChildren()
+
+        #warning("TODO: Fix this after implementing rewards:")
         self.rewards = []
     }
     

@@ -21,20 +21,14 @@ class ChildrenCollectionViewController: UICollectionViewController {
     //MARK: - View Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        DatabaseService().downloadChildDetails(for: Auth.auth().currentUser?.uid ?? "no") { (isChild) in
-            print(isChild)
-        }
+        //try? Auth.auth().signOut()
+    }
+
+    func updateViews() {
         guard let parent = AuthService.activeParent else { return }
         parentController.downloadChildren(for: parent) {
             print("Success")
         }
-
-
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //try? Auth.auth().signOut()
     }
 
     //MARK: - Navigation -
@@ -60,7 +54,7 @@ class ChildrenCollectionViewController: UICollectionViewController {
     }
 
 }
-
+//MARK: - Child Receiver (delegate pattern) -
 extension ChildrenCollectionViewController: ChildrenReceiver {
     func receive(children: [Child]) {
         self.myChildren = children

@@ -116,9 +116,11 @@ class ChoresDetailViewController: UIViewController, UIPickerViewDelegate, Onboar
         super.viewWillDisappear(animated)
         if edited {
             guard let chore = chore,
+                let controller = controller,
                 var child = child
             else { return }
-            controller?.updateChore(chore: chore, child: &child)
+            //testing if controller being nil was to blame by guard unwrapping
+            controller.updateChore(chore: chore, child: &child)
             delegate?.receiveChild(child)
         }
     }

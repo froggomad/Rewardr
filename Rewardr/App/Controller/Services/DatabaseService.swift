@@ -22,7 +22,10 @@ class DatabaseService {
     //MARK: - create/update parent -
     func updateParent(parent: Parent) {
         var parent = parent
-        if let userID = Auth.auth().currentUser?.uid {            _REF_PARENTS.child(userID).setValue(parent.parentDict)
+        if let userID = Auth.auth().currentUser?.uid {
+            _REF_PARENTS
+                .child(userID)
+                .setValue(parent.parentDict)
         }
     }
     //MARK: - create/update child -
@@ -91,7 +94,6 @@ class DatabaseService {
             .child("children")
             .child(child.id)
             .child("chores")
-
             .updateChildValues(chore.choreDict())
     }
 
@@ -104,33 +106,79 @@ class DatabaseService {
     //MARK: - Read Children -
     func downloadChildren(for parent: Parent, complete: @escaping (_ children: [Child]?) -> Void) {
         _REF_PARENTS.child(parent.id).child("children").observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let children = snapshot.value as? [NSDictionary] else { fatalError("firebase sucks")}
-            print(children)
-            if let children = children as? [Child] {
-                complete(children)
-            } else {
-                complete(nil)
+            guard let childrenDict = snapshot.value as? [String:Any] else { return }
+            var children = [Child?]()
+            for (key, child) in childrenDict {
+                let child = Child(childDict: [key:child])
+                children.append(child)
             }
-//            var childrenArr: [Child] = []
-//            for child in children {
-//
-//                childrenArr.append(child)
-//            }
-//            complete(childrenArr)
-//          // ...
-          }) { (error) in
+            complete(children.compactMap { $0 })
+            //            var childrenArr: [Child] = []
+            //            for child in children {
+            //
+            //                childrenArr.append(child)
+            //            }
+            //            complete(childrenArr)
+            //          // ...
+        }) { (error) in
             print(error.localizedDescription)
         }
     }
 
-    func getParentID(for id: String) {
+    func isChild(id: String, complete: @escaping (_ isChild: Bool, _ parentId: String?) -> Void) {
 
+        _REF_CHILDREN.child(id).observeSingleEvent(of: .value) { childSnapshot in
+            if childSnapshot.exists() {
+                guard let childDict = childSnapshot.value as? NSDictionary,
+                    let parentId = childDict["parentID"] as? String else {
+                        complete(false, nil)
+                        return
+                }
+                complete(true, parentId)
+                return
+            }
+        }
+        //it wasn't a child, return parent's ID
+        self._REF_PARENTS.child(id).observeSingleEvent(of: .value) { parentSnapshot in
+            if parentSnapshot.exists() {
+                guard let parentDict = parentSnapshot.value as? NSDictionary,
+                    let swiftDict = parentDict as? [String:Any],
+                    let id = swiftDict.keys.first else {
+                        complete(false, nil)
+                        return
+                }
+                complete(false, id)
+            }
+        }
     }
 
-    func downloadChildDetails(for id: String, complete: @escaping (_ isChild: Bool) -> Void) {
-        _REF_CHILDREN.child(id).observeSingleEvent(of: .value) { snapshot in
-            complete(snapshot.exists())
+    func downloadChildDetails(for childWithId: String, with parentId: String, complete: @escaping (_ childDetails: [String:Any]?) -> Void) {
+        _REF_PARENTS.child(parentId).child("children").child(childWithId).observeSingleEvent(of: .value) { snapshot in
+            dump(snapshot)
+            complete([snapshot.key:snapshot.value as Any])
+            return
         }
-        complete(false)
+        print(
+            """
+            Is this a parent? Access was probably denied
+            """
+        )
+        complete(nil)
+    }
+
+    func downloadParentDetails(
+        for id: String,
+        complete: @escaping (_ parentDetails: [String:Any]?) -> Void) {
+        _REF_PARENTS.child(id).observeSingleEvent(of: .value) { snapshot in
+            complete([snapshot.key:snapshot.value as Any])
+            return
+        }
+        
+        print(
+            """
+            Is this a child? Access was probably denied
+            """
+        )
+        complete(nil)
     }
 }

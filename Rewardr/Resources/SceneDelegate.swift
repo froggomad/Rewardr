@@ -28,10 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: Firebase Login
         if Auth.auth().currentUser == nil {
             let storyboard = UIStoryboard(name: "Auth", bundle: Bundle.main)
-            let authVC = storyboard.instantiateViewController(withIdentifier: "AuthVC")
-            authVC.modalPresentationStyle = .overFullScreen
+            guard let authVC = storyboard.instantiateViewController(withIdentifier: "AuthVC") as? AuthViewController else { return }
+            authVC.modalPresentationStyle = .fullScreen
+
+            guard let navC = window?.rootViewController as? UINavigationController,
+                let initialView = navC.viewControllers[0] as? ChildrenCollectionViewController else { return }
+            authVC.delegate = initialView
             window?.makeKeyAndVisible()
-            window?.rootViewController?.present(authVC, animated: true, completion: nil)
+            window?.rootViewController?.present(authVC, animated: false, completion: nil)
         }
     }
 

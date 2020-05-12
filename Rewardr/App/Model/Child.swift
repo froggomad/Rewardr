@@ -75,4 +75,43 @@ struct Child: Codable, Equatable {
         self.chores = chores
         self.points = points
     }
+
+    init?(childDict: [String:Any]) {
+
+        self.id = childDict.keys.first ?? ""
+        if let childDict = childDict[id] as? [String:Any] {
+            self.parentId = childDict["parentId"] as? String ?? ""
+            self.parentName = childDict["parentName"] as? String ?? ""
+            self.firstName = childDict["firstName"] as? String ?? ""
+            self.lastName = childDict["lastName"] as? String ?? ""
+            self.displayName = childDict["displayName"] as? String ?? ""
+            self.points = childDict["points"] as? Int ?? 0
+            guard let choreDict = childDict["chores"] as? [[String:Any]] else {
+                self.chores = []
+                return
+            }
+            var chores = [Chore]()
+            for dict in choreDict {
+                let id = dict["id"] as? String ?? ""
+                let name = dict["name"] as? String ?? ""
+                let points = dict["points"] as? Int ?? 0
+                let frequencyValue = dict["frequency"] as? Int ?? 0
+                let frequency = Chore.Frequency(rawValue: frequencyValue) ?? .daily
+                let date = dict["dueDate"] as? String ?? ""
+                let dateFormatter = DateFormatter()
+                let dueDate = dateFormatter.date(from: date) ?? Date()
+                let chore = Chore(
+                    id: id,
+                    name: name,
+                    points: points,
+                    frequency: frequency,
+                    dueDate: dueDate
+                )
+                chores.append(chore)
+            }
+            self.chores = chores
+        } else {
+            return nil
+        }
+    }
 }
