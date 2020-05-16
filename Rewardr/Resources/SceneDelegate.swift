@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         // MARK: Nav Bar Appearance
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.accent]
-        UINavigationBar.appearance().tintColor = UIColor.action
-        UINavigationBar.appearance().barTintColor = UIColor.primary
+        UINavigationBar.appearance().tintColor = UIColor.primary
+        UINavigationBar.appearance().barTintColor = UIColor.secondary
         UINavigationBar.appearance().isTranslucent = false
 
         FirebaseApp.configure()

@@ -36,7 +36,18 @@
 		B9F984BB245A6AAA008C30D4 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BA245A6AAA008C30D4 /* CustomButtons.swift */; };
 		B9F984BD245AA2CD008C30D4 /* OnboardingAddChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */; };
 		B9F984C0245BEA8A008C30D4 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F984BF245BEA8A008C30D4 /* Alert.swift */; };
+		B9FB29A3246E2873005D1460 /* RewardrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FB29A2246E2873005D1460 /* RewardrUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9FB29A5246E2873005D1460 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B92AD19B244D4DD100060897 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B92AD1A2244D4DD100060897;
+			remoteInfo = Rewardr;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5064FC77415928AD0DD96075 /* Pods-Rewardr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewardr.release.xcconfig"; path = "Target Support Files/Pods-Rewardr/Pods-Rewardr.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +87,9 @@
 		B9F984BA245A6AAA008C30D4 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		B9F984BC245AA2CD008C30D4 /* OnboardingAddChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddChildViewController.swift; sourceTree = "<group>"; };
 		B9F984BF245BEA8A008C30D4 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B9FB29A0246E2873005D1460 /* RewardrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewardrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9FB29A2246E2873005D1460 /* RewardrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardrUITests.swift; sourceTree = "<group>"; };
+		B9FB29A4246E2873005D1460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7B29122E09F9998532A24FD /* Pods_Rewardr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rewardr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,6 +99,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				030C90559D7D579C48863185 /* Pods_Rewardr.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9FB299D246E2873005D1460 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				B92AD1A5244D4DD100060897 /* Rewardr */,
+				B9FB29A1246E2873005D1460 /* RewardrUITests */,
 				B92AD1A4244D4DD100060897 /* Products */,
 				C8E286A54F0320EBB16F88ED /* Pods */,
 				3508D4D49EDB146F52197A25 /* Frameworks */,
@@ -113,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B92AD1A3244D4DD100060897 /* Rewardr.app */,
+				B9FB29A0246E2873005D1460 /* RewardrUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,6 +309,15 @@
 			path = "Main Storyboard";
 			sourceTree = "<group>";
 		};
+		B9FB29A1246E2873005D1460 /* RewardrUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B9FB29A2246E2873005D1460 /* RewardrUITests.swift */,
+				B9FB29A4246E2873005D1460 /* Info.plist */,
+			);
+			path = RewardrUITests;
+			sourceTree = "<group>";
+		};
 		C8E286A54F0320EBB16F88ED /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +349,24 @@
 			productReference = B92AD1A3244D4DD100060897 /* Rewardr.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B9FB299F246E2873005D1460 /* RewardrUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9FB29A9246E2873005D1460 /* Build configuration list for PBXNativeTarget "RewardrUITests" */;
+			buildPhases = (
+				B9FB299C246E2873005D1460 /* Sources */,
+				B9FB299D246E2873005D1460 /* Frameworks */,
+				B9FB299E246E2873005D1460 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9FB29A6246E2873005D1460 /* PBXTargetDependency */,
+			);
+			name = RewardrUITests;
+			productName = RewardrUITests;
+			productReference = B9FB29A0246E2873005D1460 /* RewardrUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -329,6 +379,10 @@
 				TargetAttributes = {
 					B92AD1A2244D4DD100060897 = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					B9FB299F246E2873005D1460 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = B92AD1A2244D4DD100060897;
 					};
 				};
 			};
@@ -346,6 +400,7 @@
 			projectRoot = "";
 			targets = (
 				B92AD1A2244D4DD100060897 /* Rewardr */,
+				B9FB299F246E2873005D1460 /* RewardrUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -361,6 +416,13 @@
 				B92AD1B0244D4DD300060897 /* Assets.xcassets in Resources */,
 				B92AD1AE244D4DD100060897 /* Main.storyboard in Resources */,
 				B99005A92463BBC800AB9E9F /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9FB299E246E2873005D1460 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +500,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9FB299C246E2873005D1460 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9FB29A3246E2873005D1460 /* RewardrUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9FB29A6246E2873005D1460 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B92AD1A2244D4DD100060897 /* Rewardr */;
+			targetProxy = B9FB29A5246E2873005D1460 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B92AD1AC244D4DD100060897 /* Main.storyboard */ = {
@@ -618,6 +696,44 @@
 			};
 			name = Release;
 		};
+		B9FB29A7246E2873005D1460 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 34P4RF23ET;
+				INFOPLIST_FILE = RewardrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hazystudios.RewardrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Rewardr;
+			};
+			name = Debug;
+		};
+		B9FB29A8246E2873005D1460 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 34P4RF23ET;
+				INFOPLIST_FILE = RewardrUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hazystudios.RewardrUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Rewardr;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -635,6 +751,15 @@
 			buildConfigurations = (
 				B92AD1B8244D4DD300060897 /* Debug */,
 				B92AD1B9244D4DD300060897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9FB29A9246E2873005D1460 /* Build configuration list for PBXNativeTarget "RewardrUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9FB29A7246E2873005D1460 /* Debug */,
+				B9FB29A8246E2873005D1460 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
